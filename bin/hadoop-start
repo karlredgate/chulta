@@ -58,7 +58,7 @@ cat <<END
       <xsl:copy>
       <xsl:element name='property'>
           <xsl:element name='name'>fs.defaultFS</xsl:element>
-          <xsl:element name='value'>hdfs://localhost:9000 (9000)</xsl:element>
+          <xsl:element name='value'>hdfs://localhost:9000</xsl:element>
       </xsl:element>
       </xsl:copy>
   </xsl:template>
@@ -170,5 +170,10 @@ $HADOOP_LIBRARY/bin/hdfs namenode -format
 # ends up running:
 # nohup nice -n $N hdfsScript --config $CONFDIR $command $@ > log 2>&1 < /dev/null &
 #  This should all translate to a Launchd config
+
+# Then mkdir
+# bin/hdfs dfs -mkdir /user
+# bin/hdfs dfs -mkdir /user/$LOGNAME
+# sbin/start-yarn.sh
 
 # vim:autoindent expandtab sw=4
